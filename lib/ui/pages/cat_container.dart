@@ -10,18 +10,21 @@ class CatContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<CatBloc, CatState>(
       builder: (context, state) {
-        return Column(
-          children: [
-            ListView.builder(
-                physics: const ClampingScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: state.cats.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return CatCard(
-                    cat: state.cats[index],
-                  );
-                }),
-          ],
+        return SafeArea(
+          child: Column(
+            children: [
+              const Text('Cat Bread',style: TextStyle(fontWeight: FontWeight.bold),),
+              ListView.builder(
+                  physics: const ClampingScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: state.cats.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return CatCard(
+                      cat: state.cats[index],
+                    );
+                  }),
+            ],
+          ),
         );
       },
     );
